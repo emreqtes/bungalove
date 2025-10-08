@@ -50,7 +50,14 @@ static const String devBaseUrl = 'http://your-dev-api.com';
 static const String prodBaseUrl = 'https://api.bungalove.com';
 ```
 
-### 4. Run the app
+### 4. Demo Mode
+The app includes a demo mode with sample data:
+- **Demo Login**: `demo@bungalove.com` / `demo123`
+- **Sample Properties**: 6 different bungalows with realistic data
+- **Mock Reviews**: User reviews and ratings
+- **Demo Reservations**: Sample booking data
+
+### 5. Run the app
 ```bash
 # For debug mode
 flutter run

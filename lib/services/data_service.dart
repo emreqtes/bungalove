@@ -1,13 +1,26 @@
 import '../models/bungalow.dart';
 import '../models/user.dart';
+import '../config/env_config.dart';
+import 'mock_data_service.dart';
 
 class DataService {
   static final DataService _instance = DataService._internal();
   factory DataService() => _instance;
   DataService._internal();
 
-  // Sample bungalow data
+  // Get bungalows (mock data or API)
   List<Bungalow> getSampleBungalows() {
+    // Demo mode kontrolü
+    if (EnvConfig.isDebugMode) {
+      return MockDataService.getBungalows();
+    }
+    
+    // Gerçek API'den veri çekme kodu buraya gelecek
+    return MockDataService.getBungalows(); // Fallback olarak mock data
+  }
+
+  // Legacy method - mock data ile değiştirildi
+  List<Bungalow> getSampleBungalowsLegacy() {
     return [
       Bungalow(
         id: '1',

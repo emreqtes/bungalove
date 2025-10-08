@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/user.dart';
 import '../config/env_config.dart';
+import 'mock_data_service.dart';
+import 'storage_service.dart';
 
 class AuthService {
   static String get _baseUrl => EnvConfig.baseUrl;
@@ -23,6 +25,28 @@ class AuthService {
   // Login with email and password
   static Future<Map<String, dynamic>> login(String email, String password) async {
     try {
+      // Demo mode kontrolü
+      if (EnvConfig.isDebugMode) {
+        final demoResult = await MockDataService.demoLogin(email, password);
+        if (demoResult['success'] == true) {
+          // Store token
+          _authToken = demoResult['token'];
+          _tokenExpiry = DateTime.parse(demoResult['expiresAt']);
+
+          // Save to storage
+          await StorageService.saveToken(demoResult['token'], _tokenExpiry!);
+
+          return {
+            'success': true,
+            'user': User.fromJson(demoResult['user']),
+            'token': _authToken,
+          };
+        } else {
+          return demoResult;
+        }
+      }
+
+      // Gerçek API çağrısı
       final response = await http.post(
         Uri.parse('$_baseUrl$_apiVersion/auth/login'),
         headers: {
