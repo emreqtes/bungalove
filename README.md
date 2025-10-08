@@ -80,7 +80,9 @@ The app uses environment-based configuration. Update `lib/config/env_config.dart
 - Debug mode settings
 
 ### Backend API
-See [BACKEND_API.md](BACKEND_API.md) for complete API documentation.
+See [BACKEND_API.md](BACKEND_API.md) for planned API documentation and development roadmap.
+
+**Note**: Currently using mock data. Backend API is in planning phase.
 
 ## 📱 Screenshots
 

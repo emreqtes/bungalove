@@ -1,6 +1,15 @@
-# Bungalove Backend API Documentation
+# Bungalove Backend API Documentation (Planlanan)
 
-## Base URL
+> **Not**: Bu dokümantasyon gelecekte geliştirilecek backend API için hazırlanmış planlanan endpoint'leri içermektedir. Şu anda frontend uygulaması mock data ile çalışmaktadır.
+
+## 🚧 Durum: Planlama Aşamasında
+- ✅ API tasarımı tamamlandı
+- ✅ Endpoint'ler belirlendi  
+- ✅ Veri modelleri hazırlandı
+- ⏳ Backend geliştirme bekleniyor
+- ⏳ Database tasarımı bekleniyor
+
+## Base URL (Planlanan)
 ```
 https://api.bungalove.com/api/v1
 ```
@@ -347,4 +356,90 @@ CREATE TABLE password_reset_tokens (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-``` 
+```
+
+## 🚀 Backend Geliştirme Planı
+
+### **Faz 1: Temel Altyapı (4-6 hafta)**
+- [ ] **Backend Framework** seçimi (Node.js/Express, Python/Django, Java/Spring)
+- [ ] **Database** kurulumu (PostgreSQL, MongoDB)
+- [ ] **Authentication** sistemi (JWT tokens)
+- [ ] **Basic CRUD** operations
+- [ ] **API Documentation** (Swagger/OpenAPI)
+
+### **Faz 2: Core Features (6-8 hafta)**
+- [ ] **User Management** endpoints
+- [ ] **Property Listing** sistemi
+- [ ] **Reservation** sistemi
+- [ ] **File Upload** (resimler için)
+- [ ] **Email** servisi (doğrulama, bildirimler)
+
+### **Faz 3: Gelişmiş Özellikler (4-6 hafta)**
+- [ ] **Search & Filter** algoritmaları
+- [ ] **Real-time Chat** (WebSocket)
+- [ ] **Payment Integration** (Stripe, PayPal)
+- [ ] **Review & Rating** sistemi
+- [ ] **Push Notifications**
+
+### **Faz 4: Optimizasyon (2-4 hafta)**
+- [ ] **Performance** optimizasyonu
+- [ ] **Caching** stratejisi (Redis)
+- [ ] **Load Balancing**
+- [ ] **Security** audit
+- [ ] **Monitoring** & Logging
+
+## 🛠️ Teknoloji Seçenekleri
+
+### **Backend Framework Seçenekleri:**
+- **Node.js + Express** (JavaScript ecosystem)
+- **Python + Django/FastAPI** (Hızlı geliştirme)
+- **Java + Spring Boot** (Enterprise-grade)
+- **Go + Gin** (Yüksek performans)
+
+### **Database Seçenekleri:**
+- **PostgreSQL** (Relational, ACID compliance)
+- **MongoDB** (NoSQL, flexible schema)
+- **MySQL** (Widely supported)
+- **Firebase** (Real-time, easy setup)
+
+### **Cloud Platform Seçenekleri:**
+- **AWS** (EC2, RDS, S3)
+- **Google Cloud** (Cloud Run, Firestore)
+- **Azure** (App Service, SQL Database)
+- **DigitalOcean** (Droplets, Managed Databases)
+
+## 📊 Tahmini Maliyetler (Aylık)
+
+### **Development Phase:**
+- **Development Server**: $20-50
+- **Database**: $15-30
+- **Storage**: $5-15
+- **Domain & SSL**: $10-20
+- **Total**: ~$50-115/ay
+
+### **Production Phase:**
+- **Production Server**: $50-200
+- **Database**: $30-100
+- **CDN & Storage**: $20-50
+- **Monitoring**: $10-30
+- **Total**: ~$110-380/ay
+
+## 🔗 Frontend Integration
+
+Mevcut Flutter uygulaması bu API ile entegre edilecek:
+
+```dart
+// Örnek API çağrısı
+final response = await http.post(
+  Uri.parse('${EnvConfig.baseUrl}/auth/login'),
+  headers: {'Content-Type': 'application/json'},
+  body: jsonEncode({
+    'email': email,
+    'password': password,
+  }),
+);
+```
+
+---
+
+**Not**: Bu dokümantasyon backend geliştirme sürecinde güncellenecek ve gerçek endpoint'ler ile değiştirilecektir. 
